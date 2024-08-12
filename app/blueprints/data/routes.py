@@ -1,11 +1,12 @@
 from flask import jsonify, request
-from storage.data_storage import retrieve_processed_data, store_fetched_data
 
-from . import data
+from app.storage.data_storage import retrieve_processed_data, store_fetched_data
+
+from . import data_blueprint
 from .handle_data import download_data, process_data
 
 
-@data.route("/fetch-data")
+@data_blueprint.route("/fetch-data")
 def fetch_data():
     """
     This route fetches data from shopify;
@@ -29,7 +30,7 @@ def fetch_data():
     )
 
 
-@data.route("/get-processed-data")
+@data_blueprint.route("/get-processed-data")
 def get_processed_data():
     """
     This route fetches the processed data from the flask session storage;

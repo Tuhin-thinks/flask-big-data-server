@@ -1,6 +1,6 @@
 import csv
 
-import config
+import app.config as config
 
 
 def process_data(data):
