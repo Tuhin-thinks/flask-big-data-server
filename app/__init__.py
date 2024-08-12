@@ -12,5 +12,5 @@ def create_app():
     """
     app = Flask(__name__)
     app.register_blueprint(home_blueprint)
-    app.register_blueprint(data_blueprint, url_prefix="/data")
+    app.register_blueprint(data_blueprint)
     return app

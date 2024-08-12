@@ -21,12 +21,14 @@ def fetch_data():
 
     stored_data_id = store_fetched_data(processed_data)
 
-    return jsonify(
-        {
-            "data_id": stored_data_id,
-            "message": "Processed data instance created successfully.",
-        },
-        201,
+    return (
+        jsonify(
+            {
+                "data_id": stored_data_id,
+                "message": "Processed data instance created successfully.",
+            }
+        ),
+        200,
     )
 
 
@@ -40,7 +42,7 @@ def get_processed_data():
     """
     data_id = request.args.get("data_id")
     if not data_id:
-        return jsonify({"error": "data_id is required"}, 400)
+        return jsonify({"error": "data_id is required"}), 400
 
     retrieved_data = retrieve_processed_data(data_id)
-    return jsonify({"data": retrieved_data})
+    return jsonify({"data": retrieved_data}), 200
